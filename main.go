@@ -2,9 +2,6 @@ package main
 
 import (
 	"bytes"
-	"github.com/julienschmidt/httprouter"
-	"github.com/rakyll/statik/fs"
-	"github.com/spf13/viper"
 	"go_movies/config"
 	"go_movies/routes"
 	_ "go_movies/statik"
@@ -12,6 +9,10 @@ import (
 	"go_movies/utils/spider"
 	"log"
 	"net/http"
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/rakyll/statik/fs"
+	"github.com/spf13/viper"
 )
 
 // Reads from the routes slice to translate the values to httprouter.Handle

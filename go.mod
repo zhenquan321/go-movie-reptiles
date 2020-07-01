@@ -3,7 +3,9 @@ module go_movies
 go 1.13
 
 require (
+	9fans.net/go v0.0.2 // indirect
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
+	github.com/acroca/go-symbols v0.1.1 // indirect
 	github.com/andybalholm/cascadia v1.1.0 // indirect
 	github.com/antchfx/htmlquery v1.1.0 // indirect
 	github.com/antchfx/xmlquery v1.1.0 // indirect
@@ -26,15 +28,18 @@ require (
 	github.com/klauspost/compress v1.10.3 // indirect
 	github.com/klauspost/cpuid v1.2.3 // indirect
 	github.com/mitchellh/gox v1.0.1 // indirect
+	github.com/nsf/gocode v0.0.0-20190302080247-5bee97b48836 // indirect
 	github.com/panjf2000/ants/v2 v2.2.2
 	github.com/rakyll/statik v0.1.6
+	github.com/ramya-rao-a/go-outline v0.0.0-20200117021646-2a048b4510eb // indirect
 	github.com/robfig/cron/v3 v3.0.0
+	github.com/rogpeppe/godef v1.1.2 // indirect
 	github.com/saintfish/chardet v0.0.0-20120816061221-3af4cd4741ca // indirect
 	github.com/shiyanhui/hero v0.0.2
 	github.com/spf13/viper v1.6.1
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	github.com/valyala/fasthttp v1.9.0
-	golang.org/x/net v0.0.0-20191021144547-ec77196f6094 // indirect
-	golang.org/x/tools v0.0.0-20191230220329-2aa90c603ae3 // indirect
+	golang.org/x/mod v0.3.0 // indirect
+	golang.org/x/tools v0.0.0-20200701041122-1837592efa10 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 )
