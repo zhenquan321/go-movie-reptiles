@@ -1,0 +1,6 @@
+.idea
+/config/*.conf
+/config/*.json
+/config/*.go
+*.exe
+*.exe~

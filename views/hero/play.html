@@ -1,0 +1,188 @@
+<%: func Play(show map[string]interface{}, buffer *bytes.Buffer) %>
+
+
+<%+ "header.html" %>
+<link href="//cdn.bootcss.com/video.js/7.6.0/alt/video-js-cdn.min.css" rel="stylesheet">
+
+<body class="custom-background">
+
+<%+ "body_head.html" %>
+
+<%+ "nav.html" %>
+
+<style>
+    .video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+    .video iframe,
+    .video object,
+    .video embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .lBtn_h {
+        background-color: red !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="subsidiary box">
+            <div class="bulletin fourfifth">
+                <span class="sixth">当前位置：</span> 视频播放器
+            </div>
+        </div>
+    </div>
+
+    <div class="mainleft" id="content">
+        <div class="article_container row  box" style="padding:0px;">
+
+            <div class="context">
+
+
+                <div id="post_content" style="padding:0px;">
+                    <div class="video">
+                        <% if show["type"].(string) == "kuyun" { %>
+                        <iframe width="100%" height="100%" allowtransparency="true" allowfullscreen="true"
+                                frameborder="0" scrolling="no"
+                                src="<%= show["play_url"].(string) %>"></iframe>
+
+                        <% }else if show["type"].(string) == "mp4" { %>
+
+                        <iframe id="real_play" width="100%" height="100%" allowtransparency="true" allowfullscreen="true"
+                                frameborder="0" scrolling="no"
+                                src=""></iframe>
+
+                        <% }else{ %>
+
+                        <video id=example-video  class="video-js vjs-default-skin" controls preload="none">
+                            <source
+                                    src="<%= show["play_url"].(string) %>"
+                            type="application/x-mpegURL">
+                        </video>
+
+                        <% } %>
+
+                    </div>
+                </div>
+                &nbsp;
+                <div class="clear"></div>
+
+                <div class="widget box row">
+                    <h3>播放地址 kuyun （无插件 极速播放）</h3>
+
+                    <% if show["MovieDetail"].(map[string]interface{})["is_film"].(string) == "1" { %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["kuyun"].([]map[string]interface{}) { %>
+                    <a title='在线播放' href="javascript:;" play-link ="<%= MovieDetail["play_link"].(string) %>"  play-type="kuyun" class="lBtn">
+                    在线播放 <%= MovieDetail["episode"].(string) %>
+                    </a>
+
+                    <% } %>
+
+                    <% }else{ %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["kuyun"].([]map[string]interface{}) { %>
+                    <a title='剧集' href="javascript:;"  play-link ="<%= MovieDetail["play_link"].(string) %>"  play-type="kuyun" class="lBtn">
+                    第<%= MovieDetail["episode"].(string) %>集
+                    </a>
+
+                    <% } %>
+
+                    <% } %>
+
+                </div>
+
+                <div class="widget box row">
+                    <h3>播放地址 ckm3u8（无插件 极速播放）</h3>
+                    <% if show["MovieDetail"].(map[string]interface{})["is_film"].(string) == "1" { %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["ckm3u8"].([]map[string]interface{}) { %>
+                    <a title='在线播放' href="javascript:;"  play-link ="<%= MovieDetail["play_link"].(string) %>"  play-type="m3u8" class="lBtn">
+                    在线播放 <%= MovieDetail["episode"].(string) %>
+                    </a>
+
+                    <% } %>
+
+                    <% }else{ %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["ckm3u8"].([]map[string]interface{}) { %>
+                    <a title='剧集' href="javascript:;" play-link ="<%= MovieDetail["play_link"].(string) %>"  play-type="m3u8" class="lBtn">
+                    第<%= MovieDetail["episode"].(string) %>集
+                    </a>
+
+                    <% } %>
+
+                    <% } %>
+                </div>
+
+                <div class="widget box row">
+                    <h3>播放地址 MP4（无需安装插件，可下载）</h3>
+
+                    <% if show["MovieDetail"].(map[string]interface{})["is_film"].(string) == "1" { %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["download"].([]map[string]interface{}) { %>
+                    <a title='在线播放' href="javascript:;" play-link ="<%= MovieDetail["play_link"].(string) %>"  play-type="mp4" class="lBtn">
+                    在线播放 <%= MovieDetail["episode"].(string) %>
+                    </a>
+
+                    <% } %>
+
+                    <% }else{ %>
+
+                    <% for _, MovieDetail := range show["MovieDetail"].(map[string]interface{})["download"].([]map[string]interface{}) { %>
+                    <a title='剧集' href="javascript:;"  play-link ="<%= MovieDetail["play_link"].(string) %>" play-type="mp4" class="lBtn">
+                    第<%= MovieDetail["episode"].(string) %>集
+                    </a>
+
+                    <% } %>
+
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+
+<%+ "footer.html" %>
+
+<script>
+    document.getElementById("real_play").src="//" +location.host + "/play?play_url=<%= show["play_url"].(string) %>&play_type=<%= show["type"].(string) %>";
+    // document.getElementById("real_play").src="<%= show["play_url"].(string) %>";
+</script>
+
+<script>
+    $('.lBtn').on('click', function(){
+        let play_url = $(this).attr("play-link");
+        let play_type = $(this).attr("play-type");
+
+        let link = "<%= show["MovieDetail"].(map[string]interface{})["info"].(map[string]string)["link"] %>";
+
+        window.location.href = "//" +location.host + '/play?play_url=' + play_url + '&play_type=' + play_type + '&real_play=1'+'&link='+ link;
+    });
+</script>
+
+<script src="//cdn.bootcss.com/video.js/7.6.0/alt/video.core.min.js"></script>
+<script src="//cdn.bootcss.com/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
+<script>
+    var player = videojs('example-video', { fluid: true });
+    player.play();
+</script>
+
+</html>

@@ -1,0 +1,115 @@
+
+    <div id="sidebar">
+
+
+        <div class="search box row">
+            <div class="search_site">
+                <form method="get" name="searchform" id="searchform" action="/search">
+                    <input type="submit" value="" id="searchsubmit" class="button">
+                    <label><span>请输入搜索内容，仅支持电影名称</span>
+                        <input type="text" class="search-s" name="q" required>
+                    </label>
+                </form>
+            </div>
+        </div>
+
+        <div class="widget box row">
+            <div id="tab-title">
+                <div class="tab">
+                    <ul id="tabnav">
+                        <li class="selected">最新电影</li>
+                        <li class="">最新剧集</li>
+                        <li class="">站长推荐</li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="tab-content">
+                <ul class="">
+                    <% for _, new_film := range show["new_film"].([]services.MovieListStruct) { %>
+                    <li>
+                        <a href='/movie?link=<%= new_film.Link %>'>
+                            <%= new_film.Name %>
+                        </a>
+                    </li>
+                    <% } %>
+
+                </ul>
+                <ul class="hide">
+                    <% for _, new_tv := range show["new_tv"].([]services.MovieListStruct) { %>
+                    <li>
+                        <a href='/movie?link=<%= new_tv.Link %>'>
+                            <%= new_tv.Name %>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+                <ul class="hide">
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-5475.html'>
+                            表姐，你好嘢！
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-40000.html'>
+                            维多利亚一号
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-25337.html'>
+                            爱人同志
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-7770.html'>
+                            表姐，你好嘢！2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-6024.html'>
+                            表姐，你好嘢！3之大人驾到
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-6369.html'>
+                            表姐，你好嘢！4之情不自禁
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-24381'>
+                            绝命毒师第一季完结
+                        </a>
+                    </li>
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-24382.html'>
+                            绝命毒师第二季完结
+                        </a>
+                    </li>
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-24384.html'>
+                            绝命毒师第三季完结
+                        </a>
+                    </li>
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-24386.html'>
+                            绝命毒师第四季完结
+                        </a>
+                    </li>
+                    <li>
+                        <a href='/movie?link=/?m=vod-detail-id-24387.html'>
+                            绝命毒师第五季完结
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
