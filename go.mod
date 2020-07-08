@@ -13,6 +13,7 @@ require (
 	github.com/coocood/freecache v1.1.0
 	github.com/elazarl/go-bindata-assetfs v1.0.0
 	github.com/go-bindata/go-bindata v3.1.2+incompatible // indirect
+	github.com/go-mgo/mgo v0.0.0-20180705113738-7446a0344b78 // indirect
 	github.com/go-redis/redis v6.15.5+incompatible
 	github.com/go-redis/redis/v7 v7.0.0-beta.4
 	github.com/gobwas/glob v0.2.3 // indirect
@@ -39,7 +40,10 @@ require (
 	github.com/spf13/viper v1.6.1
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	github.com/valyala/fasthttp v1.9.0
+	github.com/zmb3/gogetdoc v0.0.0-20190228002656-b37376c5da6a // indirect
+	go.mongodb.org/mongo-driver v1.3.4
 	golang.org/x/mod v0.3.0 // indirect
-	golang.org/x/tools v0.0.0-20200701041122-1837592efa10 // indirect
+	golang.org/x/tools v0.0.0-20200702044944-0cc1aa72b347 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )

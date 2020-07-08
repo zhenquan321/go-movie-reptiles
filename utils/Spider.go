@@ -1,11 +1,6 @@
 package utils
 
 import (
-	"github.com/go-redis/redis/v7"
-	"github.com/gocolly/colly"
-	"github.com/gocolly/colly/extensions"
-	"github.com/panjf2000/ants/v2"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
 	"runtime"
@@ -13,6 +8,12 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/go-redis/redis/v7"
+	"github.com/gocolly/colly"
+	"github.com/gocolly/colly/extensions"
+	"github.com/panjf2000/ants/v2"
+	"github.com/spf13/viper"
 )
 
 // 爬取网站的域名，如访问不了，以下几个域名建议重复替换使用
@@ -332,6 +333,7 @@ func ForeachPage(cateUrl string, url string) {
 			stamp1, _ := time.ParseInLocation(timeTemplate, updateAt, time.Local)
 
 			Smutex.Lock()
+			//存储分类数据
 			RedisDB.ZAdd("detail_links:id:"+TransformId(cateUrl), &redis.Z{
 				Score:  float64(stamp1.Unix()),
 				Member: link,
@@ -570,7 +572,9 @@ func MoviesInfo(url string) MoviesDetail {
 
 		if md.Name != "" {
 			Smutex.Lock()
+			//redisDB 存储电影详情数据
 			t := RedisDB.HMSet(moviesDetail+url+":movie_name:"+md.Name, _moviesInfo).Err()
+
 			log.Println(t)
 			Smutex.Unlock()
 		}

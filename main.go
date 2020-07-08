@@ -15,7 +15,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Reads from the routes slice to translate the values to httprouter.Handle
 // 遍历路由
 func TraversingRouter() *httprouter.Router {
 
@@ -80,7 +79,7 @@ func main() {
 	log.Println("监听端口", "http://127.0.0.1"+port)
 
 	firstSpider()
-
+	spider.Create().Start()
 	// 启动定时爬虫任务
 	utils.TimingSpider(func() {
 		spider.Create().Start()
