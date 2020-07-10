@@ -28,6 +28,7 @@ require (
 	github.com/kennygrant/sanitize v1.2.4 // indirect
 	github.com/klauspost/compress v1.10.3 // indirect
 	github.com/klauspost/cpuid v1.2.3 // indirect
+	github.com/mdempsky/gocode v0.0.0-20200405233807-4acdcbdea79d // indirect
 	github.com/mitchellh/gox v1.0.1 // indirect
 	github.com/nsf/gocode v0.0.0-20190302080247-5bee97b48836 // indirect
 	github.com/panjf2000/ants/v2 v2.2.2
@@ -43,7 +44,7 @@ require (
 	github.com/zmb3/gogetdoc v0.0.0-20190228002656-b37376c5da6a // indirect
 	go.mongodb.org/mongo-driver v1.3.4
 	golang.org/x/mod v0.3.0 // indirect
-	golang.org/x/tools v0.0.0-20200702044944-0cc1aa72b347 // indirect
+	golang.org/x/tools v0.0.0-20200710042808-f1c4188a97a1 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )
